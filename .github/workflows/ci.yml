@@ -34,5 +34,13 @@ jobs:
         with:
           go-version: "1.23.0"
 
+      - name: Install staticcheck
+        uses: dominikh/staticcheck-action@v1
+        with:
+          version: "latest"
+
       - name: Style
+        run: test -z $(go fmt ./...)
+
+      - name: Linting
         run: test -z $(go fmt ./...)
